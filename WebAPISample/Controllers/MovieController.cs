@@ -59,7 +59,16 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
-            return Ok();
+            try
+            {
+                _context.Movies.Update(movie);
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
         }
 
         // DELETE api/movie/5
