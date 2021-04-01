@@ -39,10 +39,19 @@ namespace WebAPISample.Controllers
 
         // POST api/movie
         [HttpPost]
-        public IActionResult Post([FromBody]Movie value)
+        public IActionResult Post([FromBody]Movie movie)
         {
-            // Create movie in db logic
-            return Ok();
+            try
+            {
+                _context.Movies.Add(movie);
+                _context.SaveChanges();
+
+                return CreatedAtAction(nameof(Get), new{id = movie.MovieId}, movie); // return a 201 status
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
         }
 
         // PUT api/movie
