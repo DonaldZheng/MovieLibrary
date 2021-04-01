@@ -20,10 +20,11 @@ namespace WebAPISample.Controllers
         }
         // GET api/movie
         [HttpGet]
+        // Retrieve all movies from db logic
         public IActionResult Get()
         {
-            // Retrieve all movies from db logic
-            return Ok(new string[] { "movie1 string", "movie2 string" });
+            var movieList = _context.Movies.ToList();
+            return Ok(movieList);
         }
 
         // GET api/movie/5
@@ -32,7 +33,8 @@ namespace WebAPISample.Controllers
         {
             // Retrieve movie by id from db logic
             // return Ok(movie);
-            return Ok();
+            var movie = _context.Movies.Where(m => m.MovieId == id);
+            return Ok(movie);
         }
 
         // POST api/movie
