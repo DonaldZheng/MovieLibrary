@@ -25,10 +25,7 @@ namespace WebAPISample.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DirectorName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Genre")
+                    b.Property<string>("Director")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
