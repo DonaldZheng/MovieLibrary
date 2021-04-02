@@ -14,19 +14,28 @@ $(function(){
    
 })
 
-
 function populateTable(){
     $("#movies").html("")
     $.get("https://localhost:44325/api/movie", function(data){
         console.log(data);
-        for(let i = 0; i < data.length;i++){
-        $("#movies").append(`<div><div>Title: ${data[i].title}</div>
-        <div>Director: ${data[i].director}</div>
-        <div>Genre: ${data[i].genre}</div>
-        </div><br>`)
-        }
-        $("#movies").html(JSON.stringify(data))
-        
+
+        $.each(data, function(index, el){
+            $("#movies").append(`<div>
+                <div>${index}</div>
+                <div style="color:red">Title: ${el.title}</div>
+                <div>Director: ${el.director}</div>
+                <div>Genre: ${el.genre}</div>
+                <button onClick="editMovie(${el.movieId})">CLick me!</button>
+                </div><br>`)
+        })
+        // for(let i = 0; i < data.length;i++){
+        //     $("#movies").append(`<div><div>Title: ${data[i].title}</div>
+        //     <div>Director: ${data[i].director}</div>
+        //     <div>Genre: ${data[i].genre}</div>
+        //     </div><br>`)
+        // }
+
+        //$("#movies").html(JSON.stringify(data))
     }).fail(function(err){
         console.log(err)
     })
