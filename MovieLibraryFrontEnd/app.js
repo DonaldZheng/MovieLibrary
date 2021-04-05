@@ -1,15 +1,4 @@
 $(function(){
-    // $.ajax({
-    //     url: "https://localhost:44325/api/movie",
-    //     type: "GET",
-    //     dataType:"JSON",
-    //     success: function(data){
-    //         console.log(data);
-    //     },
-    //     error: function(err){
-    //         console.log(err)
-    //     }
-    // })
     populateTable()
    
 })
@@ -22,20 +11,12 @@ function populateTable(){
         $.each(data, function(index, el){
             $("#movies").append(`<div>
                 <div>${index}</div>
-                <div style="color:red">Title: ${el.title}</div>
-                <div>Director: ${el.director}</div>
+                <div>Title: ${el.title}</div>
+                <div>Director: ${el.directorName}</div>
                 <div>Genre: ${el.genre}</div>
-                <button onClick="editMovie(${el.movieId})">CLick me!</button>
+                <button onClick="editMovie(${el.movieId})">Click me!</button>
                 </div><br>`)
         })
-        // for(let i = 0; i < data.length;i++){
-        //     $("#movies").append(`<div><div>Title: ${data[i].title}</div>
-        //     <div>Director: ${data[i].director}</div>
-        //     <div>Genre: ${data[i].genre}</div>
-        //     </div><br>`)
-        // }
-
-        //$("#movies").html(JSON.stringify(data))
     }).fail(function(err){
         console.log(err)
     })
