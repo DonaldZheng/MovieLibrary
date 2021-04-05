@@ -9,18 +9,24 @@ function populateTable(){
         console.log(data);
 
         $.each(data, function(index, el){
-            $("#movies").append(`<div>
-                <div>${index}</div>
-                <div>Title: ${el.title}</div>
-                <div>Director: ${el.directorName}</div>
-                <div>Genre: ${el.genre}</div>
-                <button onClick="editMovie(${el.movieId})">Click me!</button>
-                </div><br>`)
+            $("#movies").append(`<table style = "width: 100%"><tr>
+                <table class = "table">
+                <thead>
+                <tbody>
+                <td>${index}</td>
+                <td>${el.title}</td>
+                <td>${el.directorName}</td>
+                <td>${el.genre}</td>
+                </div><br><tr>`
+            )
+        
         })
     }).fail(function(err){
         console.log(err)
     })
 }
+
+//<button onClick="editMovie(${el.movieId})">Click me!</button> 
 
 
 function editMovie(id){
