@@ -1,5 +1,6 @@
 $(function(){
     populateTable()
+    editMovie()
    
 })
 
@@ -21,10 +22,13 @@ function populateTable(){
         console.log(err)
     })
 }
-
 //<button onClick="editMovie(${el.movieId})">Click me!</button> 
 
-
 function editMovie(id){
- console.log(id);
+    console.log(id);
+//  $("#movies").html("")
+//  $.get("https://localhost:44325/api/movie", function(data){
+//         console.log(data)
+
+
 }

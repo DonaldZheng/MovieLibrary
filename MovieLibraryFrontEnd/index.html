@@ -25,17 +25,29 @@
       <header>
         <img src="./images/MovieImage.jpg" width = "500" length= "500">
       </header>
-    <h1><a name = "movie"></a>Movies</h1>
+      <br>
+    <center>
+    <h1><a name = "movie"></a>List of Movies</h1> 
+  </center>
+
 
     <table class = "table">
       <thead>
         <tr>
-        <th>Movie Title</th>
+        <th width ="650">Movie Title</th>
         <th>Director Name</th>
-        <th>Genre</th>
+        <th width = "200">Genre</th>
       </tr>
       </thead>
       <tbody class = movies>
+        <div id="container">
+          <p id="edit"><b></b></p>
+          <center>
+          <button class="btn btn-dark" type="submit" id="add">Add Movie</button>
+          <button class="btn btn-dark" type="submit" id="delete">Delete Movie</button>
+          <button class="btn btn-dark" type="submit" id="edit">Edit Movie</button>
+          </div>
+        </center>
     </table>
     
     
