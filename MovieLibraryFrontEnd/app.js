@@ -14,6 +14,8 @@ function populateTable(){
                 <td>${el.title}</td>
                 <td>${el.directorName}</td>
                 <td>${el.genre}</td>
+                <td><button class="btn btn-dark" type="submit" id="edit">Edit</button></td>
+                <td><button class="btn btn-dark" type="submit" id="delete">Delete</button></td>
                 <br>
                 
                 </tr>`)
@@ -22,7 +24,7 @@ function populateTable(){
         console.log(err)
     })
 }
-//<button onClick="editMovie(${el.movieId})">Click me!</button> 
+
 
 function editMovie(id){
     console.log(id);
@@ -40,12 +42,13 @@ function addMovie(){
         dataType: 'json',
         data: JSON.stringify(test),
         success: function (data, status, xhr){
-        $("#edit").toggle();
-        $("#edit").trigger();
+
+        $("#add").toggle();
+        $("#add").trigger();
 
         },
-        error: function(err){
-            console.log(err)
+        error: function(jqXhr, textStatus, errorMessage){
+            console.log(errorMessage)
         }
 })
 }
