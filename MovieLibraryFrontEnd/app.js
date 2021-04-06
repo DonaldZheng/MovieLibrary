@@ -28,24 +28,32 @@ $(document).ready(function(){
 (jQuery);
 
 function editMovie(id){
-    console.log(id);
-//  $("#movies").html("")
-//  $.get("https://localhost:44325/api/movie", function(data){
-//         console.log(data)
+    $.ajax({
+        url: 'https://localhost:44325/api/movie/' + id,
+        type: "PUT",
+        success: function(id){
+             $('#movies').update(id);
+            location.reload()
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            alert( errorThrown );              
+        }            
+
+    })
 
 }
 
 function deleteMovie(id){
-        $.ajax({
-            url: 'https://localhost:44325/api/movie/' + id,
-            type: "DELETE",
-            success: function(id){
-                $('#movies').remove(id);
-                location.reload()
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                alert( errorThrown );              
-            }            
+    $.ajax({
+        url: 'https://localhost:44325/api/movie/' + id,
+        type: "DELETE",
+        success: function(id){
+             $('#movies').remove(id);
+            location.reload()
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            alert( errorThrown );              
+        }            
         });
     }
 
