@@ -3,28 +3,29 @@ $(function(){
     editMovie()
    
 })
-
-function populateTable(){
-    $("#movies").html("")
-    $.get("https://localhost:44325/api/movie", function(data){
-        console.log(data);
-
-        $.each(data, function(index, el){
-            $(".movies").append(`<tr>
-                <td>${el.title}</td>
-                <td>${el.directorName}</td>
-                <td>${el.genre}</td>
-                <td><button class="btn btn-dark" type="submit" id="edit">Edit</button></td>
-                <td><button class="btn btn-dark" type="submit" id="delete">Delete</button></td>
-                <br>
-                
-                </tr>`)
-        })
-    }).fail(function(err){
-        console.log(err)
-    })
-}
-
+$(document).ready(function(){
+    $.ajax({
+        url: "https://localhost:44325/api/movie",
+        type: "GET",
+        dataType:"JSON",
+        success: function(data){
+            $('#movies').html('');
+            $.each(data, function(index, el){               
+               $('.movies').append(`<tr>
+               <td>${el.title}</td>
+               <td>${el.directorName}</td>
+               <td>${el.genre}</td>
+               <td><button onclick='editMovie(${el.movieId})' button class ="btn btn-dark">Edit</button></td>
+               <td><button onclick='deleteMovie(${el.movieId})' button class ="btn btn-dark">Delete</button></td>
+               </tr>`)
+           });
+        },
+        error: function(err){
+           console.log(err);
+       }
+       });
+    });
+(jQuery);
 
 function editMovie(id){
     console.log(id);
@@ -32,23 +33,21 @@ function editMovie(id){
 //  $.get("https://localhost:44325/api/movie", function(data){
 //         console.log(data)
 
-
 }
 
-function addMovie(){
-    $.ajax({
-        type: 'POST',
-        url:"https://localhost:44325/api/movie",
-        dataType: 'json',
-        data: JSON.stringify(test),
-        success: function (data, status, xhr){
+function deleteMovie(id){
+        $.ajax({
+            url: 'https://localhost:44325/api/movie/' + id,
+            type: "DELETE",
+            success: function(id){
+                $('#movies').remove(id);
+                location.reload()
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                alert( errorThrown );              
+            }            
+        });
+    }
 
-        $("#add").toggle();
-        $("#add").trigger();
-
-        },
-        error: function(jqXhr, textStatus, errorMessage){
-            console.log(errorMessage)
-        }
-})
-}
+// alert pops up for search
+//var movieName = window.prompt("Enter the movie name: "); alert("the movie name is " + movieName);
