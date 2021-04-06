@@ -9,15 +9,14 @@ function populateTable(){
         console.log(data);
 
         $.each(data, function(index, el){
-            $("#movies").append(`<table style = "width: 100%"><tr>
-                <table class = "table">
-                <tbody>
+            $(".movies").append(`<tr>
                 <td>${index}</td>
                 <td>${el.title}</td>
                 <td>${el.directorName}</td>
                 <td>${el.genre}</td>
-                <br></tr>`
-            )
+                <br>
+                
+                </tr>`)
         })
     }).fail(function(err){
         console.log(err)
