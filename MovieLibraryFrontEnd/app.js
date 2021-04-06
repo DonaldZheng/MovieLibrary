@@ -27,6 +27,21 @@ $(document).ready(function(){
     });
 (jQuery);
 
+
+function addMovie(id){
+    $.ajax({
+        url: 'https://localhost:44325/api/movie/' + id,
+        type: "GET",
+        success: function(id){
+             $('#movies').add(id);
+            location.reload()
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            alert( errorThrown );              
+        }            
+
+    })
+}
 function editMovie(id){
     $.ajax({
         url: 'https://localhost:44325/api/movie/' + id,
