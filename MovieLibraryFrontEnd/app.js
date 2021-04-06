@@ -33,16 +33,19 @@ function editMovie(id){
 
 }
 
-function addMovie()
-$.ajax({
-    type: 'POST',
-    url:"https://localhost:44325/api/movie",
-    dataType: 'json',
-    success: function (result){
-        console.log(result)
-    },
-    error: function(err){
-        console.log(err)
-    }
-})
+function addMovie(){
+    $.ajax({
+        type: 'POST',
+        url:"https://localhost:44325/api/movie",
+        dataType: 'json',
+        data: JSON.stringify(test),
+        success: function (data, status, xhr){
+        $("#edit").toggle();
+        $("#edit").trigger();
 
+        },
+        error: function(err){
+            console.log(err)
+        }
+})
+}

@@ -10,4 +10,10 @@ header{
     text-align:center;
 }
 
+body{
+    background-color: lightblue;
+}
 
+table{
+    border:black;
+}
