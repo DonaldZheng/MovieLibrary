@@ -32,3 +32,17 @@ function editMovie(id){
 
 
 }
+
+function addMovie()
+$.ajax({
+    type: 'POST',
+    url:"https://localhost:44325/api/movie",
+    dataType: 'json',
+    success: function (result){
+        console.log(result)
+    },
+    error: function(err){
+        console.log(err)
+    }
+})
+
