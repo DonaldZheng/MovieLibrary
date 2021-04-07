@@ -31,7 +31,10 @@ $(document).ready(function(){
 function addMovie(id){
     $.ajax({
         url: 'https://localhost:44325/api/movie/' + id,
-        type: "GET",
+        type: "POST",
+        data: JSON.stringify() ,
+        contentType: 'application/json',
+        dataType: 'json',
         success: function(id){
              $('#movies').add(id);
             location.reload()
